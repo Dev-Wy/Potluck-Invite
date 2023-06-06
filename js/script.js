@@ -40,3 +40,33 @@ const updateGuestCount = function () {
     guestFull.classList.remove("hide");
   }
 };
+
+const assignItems = function () {
+  const potluckItems = [
+    "fruit tray",
+    "veggie tray",
+    "pasta salad",
+    "pigs-in-a-blanket",
+    "potato salad",
+    "jello",
+    "ambrosia",
+    "deviled eggs",
+    "salad",
+    "magic cookie bars",
+    "buffalo chicken dip and chips",
+    "parsley salad"
+  ];
+  const allGuests = document.querySelectorAll(".guest-list li");
+  for (let guest of allGuests) {
+    let randomPotluckIndex = Math.floor(Math.random() * potluckItems.length);
+    let randomPotluckItem = potluckItems[randomPotluckIndex];
+    let listItem = document.createElement("li");
+    listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem}.`;
+    assignedItems.append(listItem);
+    potluckItems.splice(randomPotluckIndex, 1);
+  }
+};
+assignButton.addEventListener("click", function () {
+  assignItems();
+  assignButton.disabled = true;
+});
